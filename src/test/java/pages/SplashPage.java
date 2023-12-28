@@ -10,11 +10,17 @@ public class SplashPage extends BasePage {
     }
     @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/version_text']")
     MobileElement versionText;
+
+    public String getCurrentVersion() {
+        return versionText.getText();
+    }
     public boolean validateVersionCorrect(){
         return isTextEqual(versionText, "Version 1.0.0");
     }
 
-
-
+public AuthenticationPage gotoAuthenticationPage() {
+    return new AuthenticationPage(driver);
+    }
 
 }
+//resource-id="com.sheygam.contactapp:id/version_text"

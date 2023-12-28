@@ -13,7 +13,8 @@ import java.net.URL;
 public class AppiumConfig {
 public static AppiumDriver<MobileElement> driver;
 
-@BeforeSuite
+
+    @BeforeSuite
     public void setUp()  {
     DesiredCapabilities capabilities=new DesiredCapabilities();
     capabilities.setCapability( "platformName", "Android");
@@ -21,6 +22,7 @@ public static AppiumDriver<MobileElement> driver;
     capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
     capabilities.setCapability("appPackage", "com.sheygam.contactapp");
     capabilities.setCapability("appActivity", ".SplashActivity");
+
     capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
     capabilities.setCapability(MobileCapabilityType.APP, "/Users/olgakolchina/Tools/contacts-android.apk");
     try {
