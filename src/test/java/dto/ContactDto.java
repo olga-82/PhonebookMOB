@@ -10,6 +10,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class ContactDto {
+
 String name;
 String lastName;
 String email;

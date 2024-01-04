@@ -1,17 +1,17 @@
 package pages;
 
-import config.AppiumConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class BasePage  {
     AppiumDriver<MobileElement> driver;
-
+;
     public BasePage(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -29,6 +29,7 @@ public class BasePage  {
         el.click();
         el.clear();
         el.sendKeys(text);
+        driver.hideKeyboard();
     }
 
     public void pause(int time){
@@ -43,5 +44,17 @@ public class BasePage  {
                 .until(ExpectedConditions.visibilityOf(element));
 
     }
+    public boolean isAllertPresent(String text){
+        Alert alert= new WebDriverWait(driver,10)
+                .until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert();
+           boolean res =alert.getText().contains(text);
+        alert.accept();
+        return res;
+    }
 
-}
+    }
+
+
+
+
